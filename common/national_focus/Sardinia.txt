@@ -1,0 +1,2709 @@
+focus_tree = {
+	id = SRD_focus
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 25
+			tag = SRD
+		}
+	}
+	default = no
+
+	
+#### Political ####
+
+#### Sardinian Politics ####
+	focus = {# Decisions and Exile
+		id = SRD_country
+		icon = GFX_focus_generic_home_defense
+		cost = 6.00
+		x = 6
+		y = 0
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_country"
+			add_political_power = 120
+			country_event = { id = srd.1 }
+		}
+	}
+	focus = {# Status Quo
+		id = SRD_legitimate_kingdom
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 6.00
+		ai_will_do = { factor = 40 }
+		prerequisite = {
+			focus = SRD_country
+		}
+		mutually_exclusive = {
+			focus = SRD_new_constitution
+		}
+		x = 3
+		y = 1
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_legitimate_kingdom"
+			country_event = { id = srd.11 }
+			add_political_power = -150
+			set_country_flag = SRD_Absolutist
+			add_ideas = SRD_death_of_democracy
+		}
+	}
+	focus = {# Royal Decrees
+		id = SRD_royal_decrees
+		icon = GFX_goal_constitutional_guarantees
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_legitimate_kingdom
+		}
+		x = 3
+		y = 2
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_royal_decrees"
+			add_stability = 0.05
+		}
+	}
+	focus = {# stack the cabinet
+		id = SRD_stack_the_cabinet
+		icon = GFX_focus_generic_self_management
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_royal_decrees
+		}
+		x = 1
+		y = 3
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_stack_the_cabinet"
+			custom_effect_tooltip = SRD_loyal_ministers
+			hidden_effect = {
+				remove_all_ministers = yes
+				add_ideas = SRD_Filiberto_di_Savoia_Genova_hog_pau
+				add_ideas = SRD_Vittorio_Ambrosio_for_pau
+				add_ideas = SRD_Giovanni_Sechi_eco_pau
+				add_ideas = SRD_Luigi_Arborio_Mella_di_Sant'Elia_sec_pau
+			}
+		}
+	}
+	focus = {# Enshrine Royal Guards
+		id = SRD_enshrine_royal_guard
+		icon = GFX_focus_generic_military_mission
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_royal_decrees
+		}
+		x = 3
+		y = 3
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_enshrine_royal_guard"
+			add_ideas = SRD_royal_guards_idea
+		}
+	}
+	focus = {# Crackdown on Dissidents
+		id = SRD_crackdown_on_dissidents
+		icon = GFX_goal_authoritarian
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_royal_decrees
+		}
+		x = 5
+		y = 3
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_crackdown_on_dissidents"
+			add_political_power = -150
+			set_country_flag = SRD_dissidents
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.03
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.03
+			}
+		}
+	}
+	focus = {# Royalist Fervor
+		id = SRD_royalist_fervor
+		icon = GFX_goal_national_arsenal
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_enshrine_royal_guard
+		}
+		prerequisite = {
+			focus = SRD_stack_the_cabinet
+		}
+		prerequisite = {
+			focus = SRD_crackdown_on_dissidents
+		}
+		x = 1
+		y = 4
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_royalist_fervor"
+			add_ideas = SRD_royalist_fervor_idea
+		}
+	}
+	
+	focus = {
+		id = SRD_crush_mafia
+		icon = GFX_goal_generic_political_pressure
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_enshrine_royal_guard
+		}
+		prerequisite = {
+			focus = SRD_stack_the_cabinet
+		}
+		prerequisite = {
+			focus = SRD_crackdown_on_dissidents
+		}			
+		x = 5
+		y = 4
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_royalist_fervor"
+			remove_ideas = SRD_cosa_nostra
+			add_political_power = -100
+		}
+	}
+	focus = {
+		id = SRD_end_resistance
+		icon = GFX_goal_HOL_CNA_restored_stability
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_enshrine_royal_guard
+		}
+		prerequisite = {
+			focus = SRD_stack_the_cabinet
+		}
+		prerequisite = {
+			focus = SRD_crackdown_on_dissidents
+		}			
+		x = 3
+		y = 4
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_end_resistance"
+			add_ideas = SRD_political_comissars
+			remove_ideas = SRD_death_of_democracy
+		}
+	}
+	
+	focus = {# New Constitution
+		id = SRD_new_constitution
+		icon = GFX_goal_new_treaty
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_country
+		}
+		mutually_exclusive = {
+			focus = SRD_legitimate_kingdom
+		}
+		x = 10
+		y = 1
+		ai_will_do = { factor = 60 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_new_constitution"
+			country_event = { id = srd.21 }
+			set_country_flag = SRD_Constitutional
+			hidden_effect = { country_event = {id = srd.22}}
+		}
+	}
+	###### SOCDEM ########
+	focus = {
+		id = SRD_sd_won
+		icon = GFX_goal_ideology_social_democrat
+		cost = 0.00
+		prerequisite = {
+			focus = SRD_new_constitution
+		}
+		x = 8
+		y = 2
+		
+		available = {
+			has_government = social_democrat
+			NOT = { has_country_flag = SRD_integralist_victory }
+			OR = {
+				has_country_flag = SRD_Elections
+				is_subject = yes
+			}
+		}
+		bypass = {
+			has_government = social_democrat
+			has_country_flag = SRD_the_general_election_has_occured
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_sd_won"
+	}
+}
+
+
+	focus = {# Free and Fair elections
+		id = SRD_free_and_fair_elections
+		icon = GFX_goal_liberty
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_sd_won
+		}
+		x = 8
+		y = 3
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_free_and_fair_elections"
+			add_stability = 0.03
+			increase_ruling_party_popularity_by_5 = yes
+		}
+	}
+	
+	focus = {# Freedom of Speech
+		id = SRD_freedom_of_speech
+		icon = GFX_goal_ideology_market_liberal
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_free_and_fair_elections
+		}
+		x = 8
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_freedom_of_speech"
+			add_ideas = SRD_workers_rights_idea
+		}
+	}
+	
+	focus = {# Planned Industry
+		id = SRD_planned_industry
+		icon = GFX_goal_production
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_freedom_of_speech
+		}
+		x = 8
+		y = 5
+		completion_reward = {
+			random_owned_state = {
+					limit = {
+						is_controlled_by = SRD
+						is_core_of = SRD
+						is_in_home_area = yes
+						arms_factory > 0
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+				random_owned_state = {
+					limit = {
+						is_controlled_by = SRD
+						is_core_of = SRD
+						is_in_home_area = yes
+						arms_factory > 0
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+				random_owned_state = {
+					limit = {
+						is_controlled_by = SRD
+						is_core_of = SRD
+						is_in_home_area = yes
+						industrial_complex > 0
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+		}
+	focus = {# Italian wellfare
+		id = SRD_italian_wellfare
+		icon = GFX_goal_civil_service
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_planned_industry
+		}
+		x = 8
+		y = 6
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_italian_wellfare"
+			add_political_power = 150
+			increase_ruling_party_popularity_by_5 = yes
+		}
+	}
+	focus = {#Industrialization Grants
+		id = SRD_industrial_grants
+		icon = GFX_goal_tfv_generic_tech_sharing
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_italian_wellfare
+		}
+		x = 8
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_industrial_grants"
+			add_tech_bonus = {
+						name = industrial_bonus
+						bonus = 0.2
+						uses = 1
+						category = industry
+					}
+		}
+	}
+	
+########Social Liberals#############
+	focus = {
+		id = SRD_sl_won
+		icon = GFX_goal_ideology_social_liberal
+		cost = 0.00
+		prerequisite = {
+			focus = SRD_new_constitution
+		}
+		x = 10
+		y = 2
+		
+		available = {
+			has_government = social_liberal
+			NOT = { has_country_flag = SRD_integralist_victory }
+			OR = {
+				is_subject = yes
+			}
+		}
+		bypass = {
+			has_government = social_liberal
+			has_country_flag = SRD_the_general_election_has_occured
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_sl_won"
+	}
+}
+focus = {# Strengthen Democracy
+		id = SRD_strengthen_democracy
+		icon = GFX_goal_support_democracy
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_sl_won
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_strengthen_democracy"
+			add_stability = 0.1
+			increase_ruling_party_popularity_by_5 = yes
+		}
+	}
+focus = {#Freedom of Press
+		id = SRD_free_press
+		icon = GFX_goal_AST_freedom_of_the_press
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_strengthen_democracy
+		}
+		x = 10
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_free_press"
+			add_ideas = BRA_freedom_of_press
+		}
+	}
+	focus = {#urbanization
+		id = SRD_urbanization
+		icon = GFX_goal_nested_fortifications
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_free_press
+		}
+		x = 10
+		y = 5
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_urbanization"
+			SRD = {	every_owned_state = { add_extra_state_shared_building_slots = 1	} }
+			increase_ruling_party_popularity_by_5 = yes
+		}
+	}
+	focus = {# Public Work Projects
+		id = SRD_public_work
+		icon = GFX_goal_production
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_urbanization
+		}
+		x = 10
+		y = 6
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_public_work"
+			add_ideas = SIC_sl_free_market
+		}
+	}
+	focus = {# Increase education
+		id = SRD_education
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_public_work
+		}
+		x = 10
+		y = 7
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_education"
+			add_research_slot = 1
+		}
+	}
+	
+
+##########SOCCON##############
+
+focus = {
+		id = SRD_sc_won
+		icon = GFX_goal_ideology_social_conservative
+		cost = 0.00
+		prerequisite = {
+			focus = SRD_new_constitution
+		}
+		x = 12
+		y = 2
+		
+		available = {
+			has_government = social_conservative
+			NOT = { has_country_flag = SRD_integralist_victory }
+			OR = {
+				is_subject = yes
+			}
+		}
+		bypass = {
+			has_government = social_conservative
+			has_country_flag = SRD_the_general_election_has_occured
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_sc_won"
+	}
+}
+
+focus = {# Breadbasket
+		id = SRD_breadbasket
+		icon = GFX_goal_agrarian_reform
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_sc_won
+		}
+		x = 12
+		y = 3
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_breadbasket"
+			add_ideas = SIC_sc_breadbaskett
+		}
+	}
+focus = {# Catholic Social Teaching
+		id = SRD_catholic_social_teaching
+		icon = GFX_focus_generic_concessions
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_breadbasket
+		}
+		x = 12
+		y = 4
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_catholic_social_teaching"
+			add_ideas = SIC_sd_unions
+		}
+	}
+focus = {#Commerce
+		id = SRD_export_strategies
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_catholic_social_teaching
+		}
+		x = 12
+		y = 5
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_export_strategies"
+			random_owned_state = {
+					limit = {
+						is_controlled_by = SRD
+						is_core_of = SRD
+						is_in_home_area = yes
+						arms_factory > 0
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+				random_owned_state = {
+					limit = {
+						is_controlled_by = SRD
+						is_core_of = SRD
+						is_in_home_area = yes
+						industrial_complex > 0
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+	}
+focus = {# Rouse the People
+		id = SRD_rouse_the_people
+		icon = GFX_goal_national_mobilization
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_export_strategies
+		}
+		x = 12
+		y = 6
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_rouse_the_people"
+			add_ideas = SRD_rouse_the_people_idea
+		}
+	}
+focus = {#Protectionism
+		id = SRD_protectionism
+		icon = GFX_focus_empty_coffers
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_rouse_the_people
+		}
+		x = 12
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_protectionism"
+					add_tech_bonus = {
+						name = industrial_bonus
+						bonus = 0.2
+						uses = 1
+						category = industry
+				}
+			add_ideas = SRD_economic_protection_idea
+			}
+		}
+	
+	focus = {# Constitutional Monarchy
+		id = SRD_constitutional_monarchy
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_protectionism
+			focus = SRD_education
+			focus = SRD_industrial_grants
+			}
+		x = 10
+		y = 8
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_constitutional_monarchy"
+			add_stability = 0.03
+			increase_ruling_party_popularity_by_5 = yes
+		}
+	}
+
+focus = {# The Organic Kingdom
+		id = SRD_organic_kingdom
+		icon = GFX_goal_ideology_national_populist
+		cost = 8.00
+		available = { has_country_flag = SRD_integralist_victory }
+		x = 3
+		y = 5
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_organic_kingdom"
+			add_political_power = 100
+		}
+	}
+	focus = {# National Catholicism
+		id = SRD_national_catholicism
+		icon = GFX_goal_faith_and_state
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_organic_kingdom
+		}
+		x = 1
+		y = 6
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_national_catholicism"
+			add_stability = 0.05
+		}
+	}
+	focus = {# Dissolve Parliament
+		id = SRD_disolve_parliament
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_organic_kingdom
+		}
+		x = 3
+		y = 6
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_disolve_parliament"
+			add_political_power = 125
+		}
+	}
+	focus = {# Secret Police
+		id = SRD_secret_police
+		icon = GFX_goal_secret_agents
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_organic_kingdom
+		}
+		x = 5
+		y = 6
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_secret_police"
+			add_ideas = SIC_secret_polices
+			remove_ideas = SRD_cosa_nostra
+		}
+	}
+	focus = {# Rationalize the Laws
+		id = SRD_organic_legal_code
+		icon = GFX_goal_POR_royal_edicts
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_national_catholicism
+		}
+		prerequisite = {
+			focus = SRD_disolve_parliament
+		}
+		prerequisite = {
+			focus = SRD_secret_police
+		}
+		x = 3
+		y = 7
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_organic_legal_code"
+			add_popularity = { ideology = national_populist popularity = 0.1 }
+		}
+	}
+	focus = {# Loyal Officers
+		id = SRD_loyal_officers
+		icon = GFX_focus_generic_military_mission
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_organic_legal_code
+		}
+		x = 3
+		y = 8
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SIC_loyal_officers"
+			army_experience = 15
+			add_stability = 0.05
+		}
+	}
+	focus = {# restore nobility
+		id = SRD_restore_nobility
+		icon = GFX_goal_government_icon
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_organic_legal_code
+		}
+		x = 1
+		y = 8
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SIC_restore_nobility"
+			add_popularity = { ideology = national_populist popularity = 0.1 }
+		}
+	}
+	focus = {# Propaganda
+		id = SRD_propaganda
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_restore_nobility
+		}
+		x = 1
+		y = 9
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_propaganda"
+			add_stability = .1
+		}
+
+	}
+	focus = {# Youth
+		id = SRD_youth
+		icon = GFX_goal_national_mobilization
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_loyal_officers
+		}
+		x = 3
+		y = 9
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_youth"
+			add_war_support = 0.05
+			add_manpower = 5000
+		}
+	}
+	focus = {# Corporatism
+		id = SRD_corportism
+		icon = GFX_goal_generic_improve_relations
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_organic_legal_code
+		}
+		x = 5
+		y = 8
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SIC_corportism"
+
+			add_ideas = SIC_corportism_idea }
+
+	}
+	focus = {# Real Academia
+		id = SRD_royal_academy
+		icon = GFX_goal_great_science
+		cost = 8.00
+		prerequisite = {
+			focus = SRD_corportism
+		}
+		x = 5
+		y = 9
+		ai_will_do = { factor = 50 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_royal_academy"
+			add_research_slot = 1
+		}
+	}
+	 focus = {# Home Coming
+		id = SRD_homecoming
+		icon = GFX_goal_conscription
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_royal_academy
+			focus = SRD_youth
+			focus = SRD_propaganda
+		}
+		x = 3
+		y = 10
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_homecoming"
+			add_war_support = 0.15
+			add_manpower = 10000
+		}
+	}
+
+
+
+#### Risorgimentio ####
+
+focus = {# Risorgimento
+		id = SRD_unification
+		icon = GFX_ITA_unification
+		cost = 6.00
+		available = {
+			date > 1938.1.1
+		}
+		x = 18
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_unification"
+			add_war_support = 0.05
+		}
+	}
+	focus = {# Fortress Sardinia
+		id = SRD_fortress_sardinia
+		icon = GFX_goal_nested_fortifications
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_unification
+		}
+		x = 16
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_fortress_sardinia"
+			742 = {
+				add_building_construction = {
+					type = bunker
+					province = 9838
+					level = 3
+				}
+				add_building_construction = {
+					type = bunker
+					province = 3910
+					level = 3
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11882
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 963
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 6831
+					level = 1
+				}
+			}
+			117 = {
+				add_building_construction = {
+					type = bunker
+					province = 923
+					level = 1
+				}
+			}
+		}
+
+	}
+	focus = {# French Naval Officers
+		id = SRD_french_naval_officers
+		icon = GFX_TRM_kolchak_cap
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_unification
+		}
+		x = 18
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_french_naval_officers"
+			add_ideas = SRD_french_officers
+		}
+	}
+	focus = {# Canadian Military Officers
+		id = SRD_military_training
+		icon = GFX_focus_secret_rearmament
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_unification
+		}
+		x = 20
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_military_training"
+			add_ideas = SRD_canadian_officers
+		}
+	}
+	focus = {# Destroy SRI
+		id = SRD_destroy_sri
+		icon = GFX_goal_broken_red_star
+		cost = 6.00
+		will_lead_to_war_with = SRI
+		prerequisite = {
+			focus = SRD_fortress_sardinia
+		}
+		prerequisite = {
+			focus = SRD_french_naval_officers
+		}
+		prerequisite = {
+			focus = SRD_military_training
+		}
+		x = 18
+		y = 2
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				SRI = { has_war = no }
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_destroy_sri"
+			if = {
+				limit = { country_exists = SRI }
+				declare_war_on = { target = SRI type = annex_everything }
+			}
+			add_state_claim = 838
+			add_state_claim = 158
+			add_state_claim = 1003
+		}
+	}
+	focus = {# proclaim Kingdom of Italy
+		id = SRD_kingdom_of_italy
+		icon = GFX_goal_generic_demand_territory
+		cost = 6.00
+		available = {
+			#NOT = {	country_exists = SRI }
+			SRD = {
+				controls_state = 838
+				controls_state = 158
+				controls_state = 1003
+				is_subject = no
+			}
+			SIC = {	NOT = { is_in_faction_with = SRD }	}
+		}
+		prerequisite = {
+			focus = SRD_destroy_sri
+		}
+
+		x = 18
+		y = 3
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_kingdom_of_italy"
+			custom_effect_tooltip = SRD_proclaim_kingdom_of_italy
+			set_cosmetic_tag = SRD_ITA
+			hidden_effect = {
+				add_state_claim = 1003
+				add_state_claim = 158
+				add_state_claim = 838
+				add_state_claim = 1004
+				add_state_claim = 161
+				add_state_claim = 157
+				add_state_claim = 1005
+				add_state_claim = 764
+				add_state_claim = 162
+				add_state_claim = 159
+				add_state_claim = 160
+				add_state_claim = 759
+				add_state_claim = 2
+				add_state_claim = 742
+				add_state_claim = 837
+				add_state_claim = 117
+				add_state_claim = 1006
+				add_state_claim = 156
+				add_state_claim = 115
+			}
+		}
+	}
+	focus = {# Destroy the Republic
+		id = SRD_destroy_roi
+		icon = GFX_goal_liberty
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_kingdom_of_italy
+		}
+		x = 17
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus srd_destroy_roi"
+			ITA = { country_event = { id = srd.90 } }
+		}
+
+	}
+	focus = {# Florence Concordat
+		id = SRD_florence_concordat
+		icon = GFX_goal_accord_with_pope
+		cost = 6.00
+		available = {
+			SRD = {	has_war = no }
+			is_subject = no
+			PAP = {
+				exists = yes
+				NOT = { is_in_faction_with = SRD }
+			}
+		}
+		prerequisite = {
+			focus = SRD_kingdom_of_italy
+		}
+		x = 19
+		y = 4
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_florence_concordat"
+			PAP = { country_event = { id = srd.40 } }
+		}
+	}
+	
+	focus = {# Italian Irredentism
+		id = SRD_italian_irredentism
+		icon = GFX_focus_generic_italy_first
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_destroy_roi
+		}
+		prerequisite = {
+			focus = SRD_florence_concordat
+		}
+		
+		x = 18
+		y = 5
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_italian_irredentism"
+			country_event = { id = srd.38 }
+		}
+	}
+
+#### INDUSTRY ####
+	focus = {
+		id = SRD_industry
+		icon = GFX_goal_generic_production
+		available = {
+			OR = {
+				has_completed_focus = SRD_royal_decrees
+				has_completed_focus = SRD_new_constitution
+			}
+		}
+		cost = 5.00
+		x = 29
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	### EXPORT - TOURISM ###
+	focus = {
+		id = SRD_export_focus
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_industry
+		}
+		mutually_exclusive = {
+			focus = SRD_four_year_plan
+			}
+		x = 26
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_idea = export_focus
+							has_idea = free_trade
+						}
+					}
+				}
+			}
+			add_ideas = SRD_merchant_marine
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_industrial_investment
+		icon = GFX_goal_generic_production2
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_export_focus
+		}
+		x = 26
+		y = 2
+		
+		completion_reward = {
+			156 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_Italian_vineyards
+		icon = GFX_focus_generic_self_management
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_industrial_investment
+		}
+		x = 26
+		y = 3
+		
+		completion_reward = {
+			156 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			117 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_Farming_Grants
+		icon = GFX_goal_agrarian_reform
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_Italian_vineyards
+		}
+		x = 26
+		y = 4
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_farming_grants"
+			add_ideas = SRD_farming_grants_idea
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_patronize_the_arts
+		icon = GFX_goal_collaborate_local_elites
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_Farming_Grants
+		}
+		x = 26
+		y = 5
+		
+		completion_reward = {
+			117 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+				}
+			}			
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	### AUTRAKY - COLLECTIVISATION/PRIVATISATION ###
+	focus = {
+		id = SRD_four_year_plan
+		icon = GFX_goal_generic_isolation
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_industry
+		}
+		mutually_exclusive = {
+			focus = SRD_export_focus
+			}
+		bypass = {
+			OR = {
+				has_idea = war_economy
+				has_idea = tot_economic_mobilisation
+			}
+		}
+		x = 31
+		y = 1
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}	
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	## COLLECTIVISATION - VOLUNTARY/FORCED ##
+	focus = {
+		id = SRD_Revive_the_Mezzogiorno
+		icon = GFX_goal_government_icon
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_four_year_plan
+		}
+		x = 29
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_market_protections"
+			add_ideas = SRD_market_protections_idea
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_Dig_Deep
+		icon = GFX_goal_generic_construction2
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_Revive_the_Mezzogiorno
+		}
+		x = 29
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_coal_mines"
+			add_resource = {
+				type = steel
+				amount = 24
+				state = 114
+			}
+			add_resource = {
+				type = steel
+				amount = 20
+				state = 117
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_Seize_assets
+		icon = GFX_focus_CZE_german_puppet
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_Revive_the_Mezzogiorno
+		}
+		mutually_exclusive = {
+			focus = SRD_Sell_bonds
+		}
+		x = 28
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_Seize_assets"
+			add_ideas = SRD_seize_assets_idea
+			add_stability = -0.1
+			add_popularity = { ideology = national_populist popularity = 0.1 }
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_Sell_bonds
+		icon = GFX_goal_national_arsenal
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_Revive_the_Mezzogiorno
+		}
+		mutually_exclusive = {
+			focus = SRD_Seize_assets
+		}
+		x = 30
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_Sell_bonds_ideas"
+			add_ideas = SRD_war_bonds_idea
+			add_popularity = { ideology = social_conservative popularity = 0.1 }
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	## PRIVATISATION - DISTRIBUTE LAND/SELL LAND ##
+	focus = {
+		id = SRD_farm_privatisation
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_four_year_plan
+		}
+		x = 33
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+			}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	
+	focus = {
+		id = SRD_land_development
+		icon = GFX_goal_construction_engineering
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_farm_privatisation
+		}
+		x = 33
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SIC_developed_nation"
+			add_ideas = SIC_developed
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_distribute_land
+		icon = GFX_goal_agrarian_reform
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_farm_privatisation
+		}
+		mutually_exclusive = {
+			focus = SRD_sell_land
+		}
+		x = 32
+		y = 4
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			increase_ruling_party_popularity_by_5 = yes
+			add_popularity = { ideology = social_democrat popularity = 0.1 }
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {
+		id = SRD_sell_land
+		icon = GFX_goal_gold_reserve
+		cost = 5.00
+		prerequisite = {
+			focus = SRD_farm_privatisation
+		}
+		mutually_exclusive = {
+			focus = SRD_distribute_land
+		}
+		x = 34
+		y = 4
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			add_popularity = { ideology = market_liberal popularity = 0.1 }
+		}
+		ai_will_do = {
+			factor = 80
+		}
+	}
+	focus = {# New Economy
+		id = SRD_new_economy
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_distribute_land
+			focus = SRD_sell_land
+			focus = SRD_patronize_the_arts
+			focus = SRD_Sell_bonds
+			focus = SRD_Seize_assets
+		}
+		x = 31
+		y = 6
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_new_economy"
+			remove_ideas = SRD_black_monday
+		}
+	}
+	focus = { # expand university of Calagari
+		id = SRD_university
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_new_economy
+		}
+		x = 31
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_university"
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {# Automative Industry
+		id = SRD_automotive_industry
+		icon = GFX_goal_generic_army_motorized
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_new_economy
+		}
+		x = 33
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_automotive_industry"
+			add_ideas = SRD_auto_industry_idea
+		}
+	}
+	focus = {# Autostrada
+		id = SRD_autostrada
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_automotive_industry
+		}
+		x = 33
+		y = 8
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_autostrada"
+			custom_effect_tooltip = SRD_build_after_liberation
+			158 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			1003 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			838 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			980 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			161 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			157 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			981 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			162 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			764 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			2 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			742 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			117 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			837 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			982 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			156 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			115 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			159 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			160 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			759 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {# Bussiness Grants
+		id = SRD_civilian_subsides
+		icon = GFX_goal_generic_consumer_goods
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_new_economy
+		}
+		x = 29
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_civilian_subsides"
+			add_ideas = SRD_civilian_subsides_ideas
+		}
+	}
+	focus = {#Pay it forward
+		id = SRD_pay_it_forward
+		icon = goal_bag_of_money.tga
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_civilian_subsides
+		}
+		x = 29
+		y = 8
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_civilian_subsides"
+			add_ideas = SIC_bacc_on_tracc
+		}
+	}
+	focus = {# Radio support
+		id = SRD_radio
+		icon = GFX_goal_generic_propaganda
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_new_economy
+		}
+		x = 27
+		y = 7
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_radio"
+			add_tech_bonus = {
+				name = electronics_bonus
+				bonus = 0.5
+				uses = 2
+				category = electronics
+			}
+		}
+	}
+	
+	focus = {#improving our espionage
+		id = SRD_decryption
+		icon = goal_conspiracy.tga
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_radio
+		}
+		x = 27
+		y = 8
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_decryption"
+			add_tech_bonus = {
+				name = electronics_bonus
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+	
+	
+	focus = { # Economic Miracle
+		id = SRD_economic_miracle
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 6.00
+		available = {
+			OR = {
+				has_completed_focus = SRD_kingdom_of_italy
+			}
+		}
+		prerequisite = {
+			focus = SRD_university
+		}
+		x = 31
+		y = 8
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_economic_miracle"
+			add_ideas = SRD_economic_miracle_idea
+		}
+	}
+#### Military ####
+
+focus = {# Assess the Army
+		id = SRD_assess_the_army
+		icon = GFX_goal_generic_small_arms
+		cost = 6.00
+		x = 51
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_assess_the_army"
+			army_experience = 10
+			add_manpower = 20000
+			add_tech_bonus = {
+				name = land_doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {# Superior Fire Power
+		id = SRD_superior_fire_power_plan
+		icon = GFX_goal_generic_build_tank
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_assess_the_army
+		}
+		mutually_exclusive = {
+			focus = SRD_grand_battle_plan
+		}
+		x = 50
+		y = 1
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_SF = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_superior_fire_power_plan"
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {# Elite Army
+		id = SRD_elite_army
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_superior_fire_power_plan
+		}
+		x = 49
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_elite_army"
+			add_manpower = 5000
+			add_ideas = SRD_elite_army_idea
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {# Carabinieri
+		id = SRD_carabinieri
+		icon = GFX_goal_national_arsenal
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_elite_army
+		}
+		x = 48
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_carabinieri"
+			army_experience = 25
+			add_ideas = SRD_carabinieri_ideas
+		}
+	}
+	focus = {# Artillery Effort
+		id = SRD_artillery_effort
+		icon = GFX_goal_generic_army_artillery2
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_elite_army
+		}
+		x = 50
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_artillery_effort"
+			add_tech_bonus = {
+				name = artillery_bonus
+				bonus = 0.5
+				uses = 3
+				category = artillery
+			}
+		}
+	}
+	focus = {# Arditi
+		id = SRD_arditi
+		icon = GFX_goal_national_mobilization
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_artillery_effort
+		}
+		prerequisite = {
+			focus = SRD_carabinieri
+		}
+		x = 49
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_arditi"
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {# army of genius
+		id = SRD_arma_del_genio
+		icon = GFX_goal_generic_army_doctrines
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_superior_fire_power_plan
+			focus = SRD_grand_battle_plan
+		}
+		x = 51
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_arma_del_genio"
+			add_tech_bonus = {
+				name = support_bonus
+				bonus = 0.5
+				uses = 3
+				category = support_tech
+			}
+		}
+	}
+	focus = {# Grand Battle Plan
+		id = SRD_grand_battle_plan
+		icon = GFX_goal_generic_position_armies
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_assess_the_army
+		}
+		mutually_exclusive = {
+			focus = SRD_superior_fire_power_plan
+		}
+		x = 52
+		y = 1
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 50
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_grand_battle_plan"
+			add_manpower = 8000
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	focus = {# Well Trained Army
+		id = SRD_plan_army
+		icon = GFX_focus_generic_little_entente
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_grand_battle_plan
+		}
+		x = 53
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_plan_army"
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 1.0
+				uses = 1
+				category = cat_grand_battle_plan
+			}
+			army_experience = 30
+		}
+	}
+	focus = {# Bersaglieri
+		id = SRD_bersaglieri
+		icon = GFX_goal_military_academy
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_plan_army
+		}
+		x = 52
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_bersaglieri"
+			air_experience = 25
+			add_ideas = SRD_bersaglieri_idea
+		}
+	}
+	focus = {# Infantry Tank
+		id = SRD_infantry_tank
+		icon = GFX_goal_generic_army_tanks
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_plan_army
+		}
+		x = 54
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_infantry_tank"
+			add_tech_bonus = {
+				name = tank_bonus
+				bonus = 0.5
+				uses = 3
+				category = armor
+			}
+		}
+	}
+	focus = {# Legions of Italia
+		id = SRD_light_royal_legion
+		icon = GFX_focus_secret_rearmament
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_bersaglieri
+		}
+		prerequisite = {
+			focus = SRD_infantry_tank
+		}
+		x = 53
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_light_royal_legion"
+			add_ideas = SIC_modernized_army2
+			add_tech_bonus = {
+				name = doctrine_bonus
+				bonus = 0.5
+				uses = 3
+				category = cat_grand_battle_plan
+			}
+			army_experience = 30
+		}
+	}
+### Military - Navy ###
+	focus = {# Battleship Plan
+		id = SRD_battleship_plan
+		icon = GFX_goal_generic_navy_battleship
+		cost = 6.00
+		mutually_exclusive = {
+			focus = SRD_carrier_plan
+			focus = SRD_sub_plan
+		}
+		x = 40
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_battleship_plan"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = naval_doctrine_bonus
+				bonus = 0.5
+				uses = 2
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	focus = {# Carrier Plan
+		id = SRD_carrier_plan
+		icon = GFX_goal_generic_navy_carrier
+		cost = 6.00
+		mutually_exclusive = {
+			focus = SRD_sub_plan
+			focus = SRD_battleship_plan
+		}
+		x = 42
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_carrier_plan"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = cv_tech
+			}
+			add_tech_bonus = {
+				name = naval_doctrine_bonus
+				bonus = 0.5
+				uses = 2
+				category = cat_base_strike
+			}
+		}
+	}
+	focus = {# Sub Plan
+		id = SRD_sub_plan
+		icon = GFX_goal_generic_navy_submarine
+		cost = 6.00
+		mutually_exclusive = {
+			focus = SRD_carrier_plan
+			focus = SRD_battleship_plan
+		}
+		x = 44
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_sub_plan"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = ss_tech
+			}
+			add_tech_bonus = {
+				name = navdoctrine_bonus
+				bonus = 0.5
+				uses = 2
+				category = cat_trade_interdiction
+			}
+		}
+	}
+	focus = {# Reform the navy
+		id = SRD_reform_navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_battleship_plan
+			focus = SRD_carrier_plan
+			focus = SRD_sub_plan
+		}
+		x = 42
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_reform_navy"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {# Expand Dockyards
+		id = SRD_expand_dockyards
+		icon = GFX_goal_generic_build_navy
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_reform_navy
+		}
+		x = 38
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_expand_dockyards"
+			978 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			114 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+
+		}
+	}
+	focus = {# Merchant Marine
+		id = SRD_sardinian_merchant_navy
+		icon = GFX_goal_BEL_Battleship_Investements
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_expand_dockyards
+		}
+		x = 38
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_sardinian_merchant_navy"
+			add_ideas = SRD_merchant_marine
+		}
+	}
+	focus = {# continue Reforms
+		id = SRD_continue_reforms
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_reform_navy
+		}
+		x = 42
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_continue_reforms"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {# Submarines
+		id = SRD_submarines
+		icon = GFX_goal_generic_wolf_pack
+		cost = 6.00
+		available = { has_completed_focus = SRD_sub_plan}
+		prerequisite = {
+			focus = SRD_continue_reforms
+		}
+		mutually_exclusive = {
+			focus = SRD_battle_cruisers
+			focus = SRD_carriers
+		}
+		x = 40
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_submarines"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = ss_tech
+			}
+			add_tech_bonus = {
+				name = navdoctrine_bonus
+				bonus = 0.5
+				uses = 1
+				category = cat_trade_interdiction
+			}
+		}
+	}
+	focus = {# light cruisers
+		id = SRD_light_cruisers
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_submarines
+		}
+		x = 40
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_light_cruisers"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 2
+				category = cl_tech
+			}
+		}
+	}
+	focus = {# Battle Cruisers
+		id = SRD_battle_cruisers
+		icon = GFX_goal_generic_coastal_navy
+		available = { has_completed_focus = SRD_battleship_plan}
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_continue_reforms
+		}
+		mutually_exclusive = {
+			focus = SRD_submarines
+			focus = SRD_carriers
+		}
+		x = 42
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_battle_cruisers"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = naval_doctrine_bonus
+				bonus = 0.5
+				uses = 1
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	focus = {# Battleships
+		id = SRD_battleships
+		icon = GFX_goal_generic_sea_focused_navy
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_battle_cruisers
+		}
+		x = 42
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_battleships"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = bb_tech
+			}
+		}
+	}
+	focus = {# Carriers
+		id = SRD_carriers
+		icon = GFX_goal_generic_navy_carrier
+		cost = 6.00
+		available = { has_completed_focus = SRD_carrier_plan}
+		prerequisite = {
+			focus = SRD_continue_reforms
+		}
+		mutually_exclusive = {
+			focus = SRD_battle_cruisers
+			focus = SRD_submarines
+		}
+		x = 44
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_carriers"
+			add_tech_bonus = {
+				name = navy_bonus
+				bonus = 0.5
+				uses = 1
+				category = cv_tech
+			}
+			add_tech_bonus = {
+				name = naval_doctrine_bonus
+				bonus = 0.5
+				uses = 1
+				category = cat_base_strike
+			}
+		}
+	}
+	focus = {# Naval Aviation
+		id = SRD_naval_aviation
+		icon = GFX_goal_generic_air_fighter2
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_carriers
+		}
+		x = 44
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_naval_aviation"
+			add_tech_bonus = {
+				name = navy_air_bonus
+				bonus = 0.5
+				uses = 1
+				category = naval_air
+			}
+		}
+	}
+	focus = {# Marines
+		id = SRD_marines
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_reform_navy
+		}
+		x = 46
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_marines"
+			add_tech_bonus = {
+				name = marines_bonus
+				bonus = 0.5
+				uses = 1
+				category = marine_tech
+			}
+		}
+	}
+	focus = {# Synthetic Research
+		id = SRD_synthetic_research
+		icon = GFX_goal_oil
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_marines
+		}
+		x = 46
+		y = 4
+		ai_will_do = {	factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_synthetic_research"
+			add_tech_bonus = {
+				name = synthetic_industry_bonus
+				bonus = 0.5
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	focus = {# Thalassocracy
+		id = SRD_thalassocracy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_light_cruisers
+			focus = SRD_battleships
+			focus = SRD_naval_aviation
+		}
+		prerequisite = {
+			focus = SRD_synthetic_research
+		}
+		prerequisite = {
+			focus = SRD_sardinian_merchant_navy
+		}
+		x = 42
+		y = 5
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_thalassocracy"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+### Military - Air Force ###
+	focus = {# Asses the Air Force
+		id = SRD_airforce
+		icon = GFX_goal_generic_air_doctrine
+		cost = 6.00
+		x = 58
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_airforce"
+			air_experience = 25
+		}
+	}
+	focus = {# Pilot Training
+		id = SRD_pilot_training
+		icon = GFX_goal_generic_air_production
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_airforce
+		}
+		x = 56
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_pilot_training"
+			air_experience = 25
+		}
+	}
+	focus = {# expand airports
+		id = SRD_expand_air_ports
+		icon = GFX_goal_generic_build_airforce
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_airforce
+		}
+		x = 58
+		y = 1
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_expand_air_ports"
+			978 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			114 = {
+				if = {
+					limit = {
+						is_owned_by = SRD
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {# aviation companies
+		id = SRD_aviation_companies
+		icon = GFX_goal_generic_air_fighter2
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_airforce
+		}
+		x = 60
+		y = 1
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_aviation_companies"
+			set_global_flag = SRD_aviation_industry
+			add_ideas = SRD_aviation_industry_1
+		}
+	}
+	focus = {# fighters
+		id = SRD_fighters
+		icon = GFX_goal_generic_air_fighter
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_pilot_training
+		}
+		prerequisite = {
+			focus = SRD_expand_air_ports
+		}
+		prerequisite = {
+			focus = SRD_aviation_companies
+		}
+		mutually_exclusive = {
+			focus = SRD_bombers
+		}
+		x = 57
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_fighters"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+	focus = {# Bombers
+		id = SRD_bombers
+		icon = GFX_goal_generic_air_fighter
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_pilot_training
+		}
+		prerequisite = {
+			focus = SRD_expand_air_ports
+		}
+		prerequisite = {
+			focus = SRD_aviation_companies
+		}
+		mutually_exclusive = {
+			focus = SRD_fighters
+		}
+		x = 59
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_bombers"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = tactical_bomber
+			}
+		}
+	}
+	focus = {# expand aviation industry
+		id = SRD_expand_aviation_industry
+		icon = GFX_goal_generic_air_production
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_bombers
+			focus = SRD_fighters
+		}
+		x = 58
+		y = 3
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_expand_aviation_industry"
+			if = {
+				limit = { NOT = { has_tech = interwar_antiair } }
+				set_technology = { interwar_antiair = 1 }
+			}
+			if = {
+				limit = { controls_state = 1002 }
+				1002 = {
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { controls_state = 114 }
+				114 = {
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				technology = antiair1
+				technology = antiair2
+				technology = antiair3
+				technology = antiair4
+				technology = antiair5
+			}
+		}
+
+	}
+	focus = {# Paratroopers
+		id = SRD_paracadutisti
+		icon = GFX_focus_generic_paratrooper
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_fighters
+			focus = SRD_bombers
+		}
+		x = 56
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_paracadutisti"
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 2
+				technology = paratroopers
+				technology = paratroopers2
+			}
+		}
+	}
+	focus = {# Radar
+		id = SRD_radar
+		icon = GFX_goal_generic_radar
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_bombers
+			focus = SRD_fighters
+		}
+		x = 60
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_radar"
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = radar_tech
+			}
+		}
+	}
+	focus = {# rule the skies
+		id = SRD_rule_the_skies
+		icon = GFX_goal_generic_air_fighter2
+		cost = 6.00
+		prerequisite = {
+			focus = SRD_paracadutisti
+		}
+		prerequisite = {
+			focus = SRD_expand_aviation_industry
+		}
+		prerequisite = {
+			focus = SRD_radar
+		}
+		x = 58
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SRD_rule_the_skies"
+			air_experience = 25
+			add_ideas = SRD_rule_the_skies_ideas
+		}
+	}
+}
