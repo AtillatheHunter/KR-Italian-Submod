@@ -981,7 +981,7 @@ focus = {# Risorgimento
 		prerequisite = {
 			focus = SRD_kingdom_of_italy
 		}
-		x = 17
+		x = 18
 		y = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus srd_destroy_roi"
@@ -989,29 +989,29 @@ focus = {# Risorgimento
 		}
 
 	}
-	focus = {# Florence Concordat
-		id = SRD_florence_concordat
-		icon = GFX_goal_accord_with_pope
-		cost = 6.00
-		available = {
-			SRD = {	has_war = no }
-			is_subject = no
-			PAP = {
-				exists = yes
-				NOT = { is_in_faction_with = SRD }
-			}
-		}
-		prerequisite = {
-			focus = SRD_kingdom_of_italy
-		}
-		x = 19
-		y = 4
-		ai_will_do = { factor = 20 }
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus SRD_florence_concordat"
-			PAP = { country_event = { id = srd.40 } }
-		}
-	}
+#	focus = {# Florence Concordat
+#		id = SRD_florence_concordat
+#		icon = GFX_goal_accord_with_pope
+#		cost = 6.00
+#		available = {
+#			SRD = {	has_war = no }
+#			is_subject = no
+#			PAP = {
+#				exists = yes
+#				NOT = { is_in_faction_with = SRD }
+#			}
+#		}
+#		prerequisite = {
+#			focus = SRD_kingdom_of_italy
+#		}
+#		x = 19
+#		y = 4
+#		ai_will_do = { factor = 20 }
+#		completion_reward = {
+#			log = "[GetDateText]: [Root.GetName]: Focus SRD_florence_concordat"
+#			PAP = { country_event = { id = srd.40 } }
+#		}
+#	}
 	
 	focus = {# Italian Irredentism
 		id = SRD_italian_irredentism

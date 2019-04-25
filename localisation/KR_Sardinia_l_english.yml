@@ -51,7 +51,7 @@ SRD_piedmont_national_populist:0 "Sardinia-Piedmont"
 
 ### Tooltips ###
 SRD_build_after_liberation:0 "Will be built after Liberating Piedmont\n\n"
-SRD_proclaim_kingdom_of_italy:0 "Proclaim the Kingdom of Italy\n\n"
+SRD_proclaim_kingdom_of_italy:0 "Proclaim Dominance\n\n"
 SRD_proclaim_sardinia_piedmont:0 "Proclaim Kingdom of Sardinia-Piedmont\n\n§RNote: this will mean renouncing any ambitions to the Kingdom of Italy\n\n"
 SRD_industralize_the_south_flag:0 "Once we control southern Italy we shall Industrialise it.\n\n"
 SRD_loyal_ministers:0 "We shall fill the privy council with competent and loyal ministers to the king"
@@ -303,7 +303,7 @@ SRD_battle_cruisers:0 "Battle Cruisers"
 SRD_battle_cruisers_desc:0 "Now that we have designs for Battleships, we nee dto make sure we have a powerful escort force for our titans of the sea. While still large, battlecruisers can sail in front of our might behemoths and protect them from smaller craft while our big guns pound enemy capital ships into submission."
 SRD_battleships:0 "Battleships"
 SRD_battleships_desc:0 "Now that the basics of our new fleet have been worked out, it is time to design some truly great battleships to augment our existing fleet, the first of which shall be our new mighty flagship. It's a wonder of modern engineering that we were able to build such large ships on such a small island, but such is the power of Sardinina!"
-SRD_marines:0 "The Sardinian Marine Force"
+SRD_marines:0 "The Italian Marine Force"
 SRD_marines_desc:0 "There is no excuse for us not to exploit the talents of the hardy island people under our stewardship. Proposals have been put forward to capitalise on this and encourage the specialised training of Marine detachments."
 SRD_synthetic_research:0 "Synthetic Research"
 SRD_synthetic_research_desc:0 "Having no natural resources of our own apart from the meagre bounty of Piedmont, we need to invest in new ways of acquiring the lifeblood of modern warfare: oil, and it's potential derivative rubber. If we ever hope to become even vaguely self-sufficient we will need amply supply of both these resources."
@@ -314,7 +314,7 @@ SRD_naval_aviation_desc:0 "We must not ignore the simple fact that we are an isl
 SRD_thalassocracy:0 "Proclaim Thalassocracy"
 SRD_thalassocracy_desc:0 "Through rapid development, research of new doctrine and new ships of the line, and an overall strategy of naval superiority, we can declare without doubt that the majority of our power comes from the sea. We may never dominate all of Europe, but the coastlines of the Italian Peninsula shall be ours, forever guarded by our Royal navy."
 ### Focus - Air port ###
-SRD_airforce:0 "The Sardinian Air Fleet"
+SRD_airforce:0 "The Italian Air Fleet"
 SRD_airforce_desc:0 "It has been said by learned theorists that the future of modern conflict lies in the air. We must begin formalising the creation of a dedicated Air Fleet, complete with bases, to ensure that we are not left behind"
 SRD_pilot_training:0 "Pilot Training"
 SRD_pilot_training_desc:0 "We have to be careful when improving our aircraft; if our pilots cannot handle the craft all our effort will be wasted. We need to create a fine air school for our pilots, and make sure their training is up to modern standards for our new aircraft."
@@ -538,3 +538,40 @@ srd.95.b:0 "Then we must let them go their own way."
 srd.120.t:0 "Riots!"
 srd.120.d:0 "Democracy was struck down, and now our people are fighting our government, taking to the streets. While the Carabinieri managed to slow the riots to a halt, the damage has been done."
 srd.120.a:0 "Damn."
+
+# Newer Flavor Events 
+
+srd.125.t:0 "The King's Donation"
+srd.125.d:0 "King Vittorio Emmanuele di Savoia has graciously donated his coin collection today at the National Roman Museum. His collection, not to be doubted, contained over 100,000 coins, dating from the fall of the Roman Empire in the West to the Unification of Italy. In a speech given before the people of Rome he declared that coin collecting was his greatest passion in life, and that he is excited to share this passion with the entirety of Italy."
+srd.125.a:0 "What a generous King!"
+
+srd.130.t:0 "Birth of a New Prince"
+srd.130.d:0 "The Italian heir Umberto and Princess Mary are celebrating the birth of their first child: Filiberto Amadeo. The birth of the new royal has led to cheers in the Italian Kingdom and Canada with celebrations abound."
+srd.130.a:0 "God bless Prince Filiberto Amedeo!"
+
+srd.131.t:0 "Birth of a New Prince"
+srd.131.d:0 "The Italian heir Umberto and Princess Betriz are celebrating the birth of their first child: Carlo Gioacchini. The birth of the new royal has led to cheers in the Italian Kingdom and among Spanish monarchists with celebrations abound."
+srd.131.a:0 "God bless Prince Carlo Gioacchini!"
+
+srd.132.t:0 "Birth of a New Prince"
+srd.132.d:0 "The Italian heir Umberto and Princess Marie Jose are celebrating the birth of their first child: Vittorio Emmanuele, named for his grandfather. The birth of the new royal has led to cheers in the Italian Kingdom and among Belgian loyalists."
+srd.132.a:0 "God bless Prince Vittorio Emmanuele!"
+
+srd.135.t:0 "Scandal!"
+srd.135.d:0 "Rumors have been flying around that our precious heir Umberto has been fraternizing with open homosexuals. The rumors continue that he prefers the company of handsome men and gives them broaches bearing his royal insignia. The Crown has been silent on the matter in the face of this speculation."
+srd.135.a:0 "It's a Syndicalist Conspiracy! We swear!"
+
+srd.136.t:0 "Further Scandal!"
+srd.136.d:0 "In light of recent events regarding Umberto's sexuality, actress Marta Abba has emerged from her home to admit that she and Umberto had an affair in the years leading up to his marriage. She spoke vividly of his masculinity and virility. This news has spread like wildfire from Rome to Palermo. The Crown could not be reached for comment again."
+srd.136.a:0 "An odd turn of events."
+
+#Death events
+
+srd.170.t:0 "Luigi Pirandello Passes Away..."
+srd.170.d:0 "Luigi Pirandello was found deceased today in his home at Via Bosio after a bout with pneumonia. He was a novelist and playwright who won a Nobel Prize in 1934 for his contributions to literature including his novels, hundreds of short stories, and plays - some of which even being written in Sicilian! The Sicilians mourn for this instrumental writer."
+srd.170.a:0 "Requiescat in Pace."
+
+srd.171.t:0 "Ottorino Respighi Passes Away"
+srd.171.d:0 "Ottorino Respighi died today of endocartitis. A composer best known for his work on the opera La fiamma, Ottorino was actually a northern Italian from Bologna. He unfortunately would never be able to return home, but his art remains in the heart of all Italians today."
+srd.171.a:0 "Requiescat in Pace."
+
