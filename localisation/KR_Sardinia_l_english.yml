@@ -50,7 +50,7 @@ SRD_piedmont_national_populist:0 "Sardinia-Piedmont"
 
 
 ### Tooltips ###
-SRD_build_after_liberation:0 "Will be built after Liberating Piedmont\n\n"
+SRD_build_after_liberation:0 "Will be built after recovering Italy\n\n"
 SRD_proclaim_kingdom_of_italy:0 "Proclaim Dominance\n\n"
 SRD_proclaim_sardinia_piedmont:0 "Proclaim Kingdom of Sardinia-Piedmont\n\n§RNote: this will mean renouncing any ambitions to the Kingdom of Italy\n\n"
 SRD_industralize_the_south_flag:0 "Once we control southern Italy we shall Industrialise it.\n\n"
@@ -99,13 +99,13 @@ SRD_war_bonds_idea:0 "War Bonds"
 SRD_political_comissars:0 "Re-education Efforts"
 
 ##Opinion Modifiers##
-SRD_royal_marriage:0 "Savoian Royal Marriage"
+SRD_royal_marriage:0 "Savoyard Royal Marriage"
 
 ### Focus - Politics ###
 SRD_country:0 "Decisions and Exile"
-SRD_country_desc:0 "Ever since Italy's defeat in the Weltkrieg and the ensuring civil issues we have resided here in the Mezzogiorno, the populace grow agitated over our absolute rule and the various major Italian parties have threatened to stop working with us. We have tough choices ahead."
+SRD_country_desc:0 "Ever since Italy's defeat in the Weltkrieg and the ensuing civil issues we have resided here in the Mezzogiorno and Rome. Now, the populace have grown agitated over our absolute rule and the various major Italian parties have threatened to stop working with us if we do not liberalize. We have tough choices ahead."
 SRD_legitimate_kingdom:0 "Status Quo"
-SRD_legitimate_kingdom_desc:0 "Although we may reside in Napoli we are still the legitimate rulers. We shall reinforce this stance both within our holdings and diplomatically to the world."
+SRD_legitimate_kingdom_desc:0 "Although the north may be held by syndicalist traitors and foriegn enemies we are still the true rulers of all of Italy. We cannot let political infighting tear us apart, and so the king will maintain his wise rule over the nation."
 SRD_royal_decrees:0 "Royal Decrees"
 SRD_royal_decrees_desc:0 "Our current rule relies on a system of unspoken agreements and verbal contracts, this form of rule is unacceptable for a modern Kingdom such as ourselves. Rule by Decree will allow us to sieze private assets and take all necessary measures to protect the kingdom."
 SRD_stack_the_cabinet:0 "Stack the Cabinet"
@@ -248,11 +248,11 @@ SRD_land_development_desc:0 "No matter which path we take it is generally agreed
 SRD_distribute_land:0 "Distribute Land"
 SRD_distribute_land_desc:0 "The King has decreed the Agrarian Redistribution Act, signing the first of several land reforms into law, and to the cheers of the Mezzogiorno!"
 SRD_sell_land:0 "To the Highest Bidder!"
-SRD_sell_land_desc:0 "The King has authorized the first Grand Auction, promising to sell off lands to enterprising companies. While this is not a popular maneuver, Market liberals believe it will be enough to help alleviate the worst of Black Friday."
+SRD_sell_land_desc:0 "The King has authorized the first Grand Auction, promising to sell off lands to enterprising companies. While this is not a popular maneuver, Market liberals believe it will be enough to help alleviate the worst of Black Monday."
 SRD_new_economy:0 "Revitalized Economy"
 SRD_new_economy_desc:0 "We have successfully revitalized our economy enough to ensure that Black Friday has ended. While there is still more reform to come, we can breathe a sigh of relief as our economy has began to stabilize. "
 SRD_university:0 "Expand the University of Caligari"
-SRD_university_desc:0 "Cagligari University was a shining establishment within the former kingdom, we shall now expand it to meet our research needs."
+SRD_university_desc:0 "Cagliagri University was a shining establishment within the former kingdom, we shall now expand it to meet our research needs."
 SRD_economic_miracle:0 "Economic Miracle"
 SRD_economic_miracle_desc:0 "Through our economic reforms and the industrial development of the Mezzogiorno, we have crafted an economy that is both more productive, and less reliant on foreign goods. Not only can we make more for our people, but it takes less resources to do so! Truly an economic miracle."
 ### Focus - army ###
@@ -271,7 +271,7 @@ SRD_arditi_desc:0 "We were among the first countries in the Weltkrieg to learn t
 SRD_arma_del_genio:0 "Arma Del Genio"
 SRD_arma_del_genio_desc:0 "Italy has always had a long history of brilliant army engineers. In the Weltkrieg this was expanded to include medical personal and electronic operators. We need new technology so our medics, support technicians, and especially army engineers can excel in this new age of warfare."
 SRD_grand_battle_plan:0 "Grand Battle Plan"
-SRD_grand_battle_plan_desc:0 "Sicily may not have a lot of men, but a lot of men aren't needed when you can use planning to pick your battles. We need a force with high morale, with tools necessary to dig in, and with officers who can properly assess and make use of the terrain, the weather, and his men."
+SRD_grand_battle_plan_desc:0 "We may not have a lot of men, but a lot of men aren't needed when you can use planning to pick your battles. We need a force with high morale, with tools necessary to dig in, and with officers who can properly assess and make use of the terrain, the weather, and his men."
 SRD_plan_army:0 "A Well-Trained Army"
 SRD_plan_army_desc:0 "An army should behave like a well-oiled machine. We must have an army with the highest calibre of training, and the capability to push objectives. Our enemies in the Social Republic are mostly disorganized militias - our military will not have need to fear them with its discipline and professional commanders."
 SRD_bersaglieri:0 "The Bersaglieri"
@@ -472,7 +472,7 @@ srd.50.d:0 "King Vittorio Emmanuele di Savoia perished in his manor last night. 
 srd.50.a:0 "Long live King Umberto!"
 
 srd.51.t:0 "A Royal Marriage"
-srd.51.d:0 "Monarchists have long expressed the need for Umberto to marry and sire an heir. After consulting various allies, the follow options have presented themselves to the Savoian Heir. Most advisors push for stronger ties with our British allies yet other critics say that he should instead seek a true Catholic wife."
+srd.51.d:0 "Monarchists have long expressed the need for Umberto to marry and sire an heir. After consulting various allies, the follow options have presented themselves to the Savoyard Heir. Most advisors push for stronger ties with our British allies yet other critics say that he should instead seek a true Catholic wife."
 srd.51.a:0 "Arrange the wedding with Princess Mary of Canada. Allies come first."
 srd.51.b:0 "Arrange the wedding with Infanta Betriz of Spain, a true Catholic."
 srd.51.c:0 "Appease both with a marriage to Maria Jose, exiled from Belgium."
@@ -522,7 +522,7 @@ srd.92.d:0 "This is a dark day for our Kingdom, as the Republic of Italy in the 
 srd.92.a:0 "Avanti Savoia!"
 
 srd.93.t:0 "The Vote is in!"
-srd.93.d:0 "The votes have been tallied from Venice to Milan and everywhere in between. While a number of republicans made a concerted effort to prevent surrendering our independence, many monarchs were driven to the polls as well to welcome back their Savoian Kings. Now the results!"
+srd.93.d:0 "The votes have been tallied from Venice to Milan and everywhere in between. While a number of republicans made a concerted effort to prevent surrendering our independence, many monarchs were driven to the polls as well to welcome back their Savoyard Kings. Now the results!"
 srd.93.a:0 "The Plebiscite Succeeds! (Game over)"
 srd.93.b:0 "The Plebiscite Fails!"
 
