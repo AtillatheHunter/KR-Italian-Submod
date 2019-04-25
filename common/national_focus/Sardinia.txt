@@ -809,7 +809,30 @@ focus = {# Risorgimento
 		y = 0
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SRD_unification"
-			add_war_support = 0.05
+			add_war_support = 0.1
+			custom_effect_tooltip = ITA_risorgimento_begun_tooltip
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_claim_or_core_of_ROOT = no
+						OR = {
+							state = 158
+							state = 1003
+							state = 838
+							state = 1004
+							state = 162
+							state = 161
+							state = 157
+							state = 1005
+							state = 764
+							state = 159
+							state = 160
+							state = 759
+						}
+					}
+					add_claim_by = SRD
+				}
+			}
 		}
 	}
 	focus = {# Fortress Sardinia
@@ -850,11 +873,16 @@ focus = {# Risorgimento
 					level = 1
 				}
 			}
-			117 = {
+			2 = {
 				add_building_construction = {
 					type = bunker
-					province = 923
-					level = 1
+					province = 11751
+					level = 3
+				}
+				add_building_construction = {
+					type = bunker
+					province = 9904
+					level = 3
 				}
 			}
 		}
@@ -921,68 +949,18 @@ focus = {# Risorgimento
 				limit = { country_exists = SRI }
 				declare_war_on = { target = SRI type = annex_everything }
 			}
-			add_state_claim = 838
-			add_state_claim = 158
-			add_state_claim = 1003
 		}
 	}
-	focus = {# proclaim Kingdom of Italy
-		id = SRD_kingdom_of_italy
-		icon = GFX_goal_generic_demand_territory
-		cost = 6.00
-		available = {
-			#NOT = {	country_exists = SRI }
-			SRD = {
-				controls_state = 838
-				controls_state = 158
-				controls_state = 1003
-				is_subject = no
-			}
-			SIC = {	NOT = { is_in_faction_with = SRD }	}
-		}
-		prerequisite = {
-			focus = SRD_destroy_sri
-		}
 
-		x = 18
-		y = 3
-		ai_will_do = { factor = 20 }
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus SRD_kingdom_of_italy"
-			custom_effect_tooltip = SRD_proclaim_kingdom_of_italy
-			set_cosmetic_tag = SRD_ITA
-			hidden_effect = {
-				add_state_claim = 1003
-				add_state_claim = 158
-				add_state_claim = 838
-				add_state_claim = 1004
-				add_state_claim = 161
-				add_state_claim = 157
-				add_state_claim = 1005
-				add_state_claim = 764
-				add_state_claim = 162
-				add_state_claim = 159
-				add_state_claim = 160
-				add_state_claim = 759
-				add_state_claim = 2
-				add_state_claim = 742
-				add_state_claim = 837
-				add_state_claim = 117
-				add_state_claim = 1006
-				add_state_claim = 156
-				add_state_claim = 115
-			}
-		}
-	}
 	focus = {# Destroy the Republic
 		id = SRD_destroy_roi
 		icon = GFX_goal_liberty
 		cost = 6.00
 		prerequisite = {
-			focus = SRD_kingdom_of_italy
+			focus = SRD_destroy_sri
 		}
 		x = 18
-		y = 4
+		y = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus srd_destroy_roi"
 			ITA = { country_event = { id = srd.90 } }
@@ -1025,7 +1003,7 @@ focus = {# Risorgimento
 		}
 		
 		x = 18
-		y = 5
+		y = 4
 		ai_will_do = { factor = 10 }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SRD_italian_irredentism"
